@@ -1,0 +1,8 @@
+@EndUserText.label: 'service for bogføring table'
+@AbapCatalog.extensibility.extensible: true
+@ObjectModel.leadingEntity.name: 'ZC_SPAC115_BSKEMA'
+define service ZUI_SPAC115_BSKEMA_04 {
+  expose ZC_SPAC115_BSKEMA;
+  expose ZC_SPAC115_BKONTI;
+  expose ZC_SPAC115_BWorker;
+}

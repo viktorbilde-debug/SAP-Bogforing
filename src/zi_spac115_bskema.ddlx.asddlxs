@@ -1,0 +1,37 @@
+@Metadata.layer: #CUSTOMER
+annotate view ZC_SPAC115_BSKEMA
+  with 
+{
+@EndUserText.label: 'PostID'
+@UI.lineItem: [{ position: 10, label: '' }]
+@UI.identification: [{ position: 20, 
+label: ''}]
+PostID;
+@EndUserText.label: 'Konto'
+@UI.lineItem: [{ position: 20, label: '' }]
+@UI.identification: [{ position: 30, label: '' }]
+@Consumption.valueHelpDefinition: [{ entity: {
+name: 'ZSPAC115_I_BKONTI',
+element: 'Konto'}}]
+Konto;
+@EndUserText.label: 'Debet'
+@UI.lineItem: [{ position: 30, label: '' }]
+@UI.identification: [{ position: 40, label: '' }]
+  Debet;
+@EndUserText.label: 'Kredit'
+@UI.lineItem: [{ position: 40, label: '' }]
+@UI.identification: [{ position: 50, label: '' }]
+  Kredit;
+@EndUserText.label: 'WorkId'
+@UI.lineItem: [{ position: 50, label: '' }]
+@UI.identification: [{ position: 60, label: '' }]
+  WorkId;
+@EndUserText.label: 'Name'
+@UI.lineItem: [{ position: 60, label: '' }]
+@UI.identification: [{ position: 70, label: '' }]
+  Name;
+@EndUserText.label: 'Department'
+@UI.lineItem: [{ position: 70, label: '' }]
+@UI.identification: [{ position: 80, label: '' }]
+  Department;
+}

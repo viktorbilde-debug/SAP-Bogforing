@@ -1,0 +1,75 @@
+managed implementation in class zbp_r_spac115_trans unique;
+strict ( 2 );
+extensible;
+define behavior for ZR_SPAC115_Trans //alias <alias_name>
+persistent table zspac115_trans
+lock master
+authorization master ( global )
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly )
+  Transid,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+  field ( mandatory )
+    WorkerId,
+    Name,
+    Time;
+  association _skema { create; }
+  determination SetTransactionID on modify
+  {
+    create;
+  }
+
+mapping for zspac115_trans corresponding
+    {
+      Transid             = transid;
+      Name              = name;
+      Time              = time;
+      WorkerId           = worker_id;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}
+
+define behavior for ZR_SPAC115_BSKEMA alias Bog1 //alias <alias_name>
+persistent table zspac115_bskema
+lock dependent by _Transaction
+authorization dependent by _Transaction
+etag master LocalLastChangedAt
+late numbering
+extensible
+{
+  update;
+  delete;
+  field ( mandatory ) Konto, Kredit, Debet, WorkId;
+  field ( readonly ) PostID, TransId, Name, Department, LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+
+association _Transaction;
+
+ mapping for zspac115_bskema corresponding extensible
+    {
+      TransId            = transid;
+      PostID             = posting_id;
+      Konto              = konto;
+      Debet              = debet;
+      Kredit             = kredit;
+      WorkID             = worker_id;
+      Name               = name;
+      Department         = department;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

@@ -1,0 +1,41 @@
+managed implementation in class zbp_r_spac115_bkonti unique;
+strict ( 2 );
+with draft;
+extensible;
+
+define behavior for ZR_SPAC115_BKONTI //alias <alias_name>
+persistent table zspac115_bkonti
+draft table zspac115_bkontid
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+extensible
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly:update ) Konto, beskrivelse;
+  field ( readonly ) LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+
+   draft determine action Prepare extensible
+  {
+  }
+
+   mapping for zspac115_bkonti corresponding extensible
+    {
+      Konto              = konto;
+      beskrivelse        = beskrivelse;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}
